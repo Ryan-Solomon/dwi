@@ -1,6 +1,11 @@
 import React from 'react';
-import { StyledText, StyledView } from './HomeScreenStyles';
-import { ImageBackground, Image, StyleSheet } from 'react-native';
+import {
+  StyledButtonContainer,
+  StyledButtonCreator,
+  StyledText,
+  StyledView,
+} from './HomeScreenStyles';
+import { ImageBackground, Image, StyleSheet, View } from 'react-native';
 
 export const HomeScreen = () => {
   return (
@@ -9,12 +14,17 @@ export const HomeScreen = () => {
         source={require('../../../assets/img/background.jpg')}
         style={styles.bgImage}
       />
-      <Image
-        style={styles.logo}
-        source={require('../../../assets/img/logo-red.png')}
-      />
-
-      <StyledText>HomeScreen</StyledText>
+      <View>
+        <Image
+          style={styles.logo}
+          source={require('../../../assets/img/logo-red.png')}
+        />
+        <StyledText>HomeScreen</StyledText>
+      </View>
+      <StyledButtonContainer>
+        <StyledButtonCreator backgroundColor='teal' buttonText='Button One' />
+        <StyledButtonCreator backgroundColor='orange' buttonText='Button Two' />
+      </StyledButtonContainer>
     </StyledView>
   );
 };
@@ -29,7 +39,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   logo: {
-    marginTop: 50,
     width: 30,
     height: 100,
     aspectRatio: 1,
