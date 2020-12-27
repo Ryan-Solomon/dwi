@@ -2,6 +2,7 @@ import React from 'react';
 import { FlatList } from 'react-native';
 import { ListItem } from '../../components/list-item/ListItem';
 import { Screen } from '../../components/scr/Screen';
+import { StyledSeparator } from '../../components/separator/ItemSeparator';
 
 const fakeMessages = [
   {
@@ -34,6 +35,7 @@ export const MessagesScreen = () => {
             />
           );
         }}
+        ItemSeparatorComponent={StyledSeparator}
       />
     </Screen>
   );

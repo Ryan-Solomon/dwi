@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 export const StyledListItemContainer = styled.View`
   flex-direction: row;
   margin-left: 20px;
+  padding: 15px;
 `;
 
 type TextProps = {
