@@ -16,7 +16,7 @@ export const Card: FC<TCardProps> = ({ image, title, subtitle }) => {
         style={styles.image}
       />
       <StyledCardText>Red Jacket</StyledCardText>
-      <StyledCardText>$100</StyledCardText>
+      <StyledCardText fontColor='#007e00'>$100</StyledCardText>
     </StyledCardContainer>
   );
 };
