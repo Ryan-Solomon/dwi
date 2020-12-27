@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Image } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 import {
   StyledListItemContainer,
   StyledListItemText,
@@ -14,16 +14,26 @@ type TListItemProps = {
 
 export const ListItem: FC<Partial<TListItemProps>> = ({
   image,
-  title = 'main title',
-  subtitle = 'subtitle',
+  title = 'Ryan Solomon',
+  subtitle = '5 Listings',
 }) => {
   return (
     <StyledListItemContainer>
-      <Image source={require('../../../assets/img/logo-red.png')} />
+      <Image
+        style={styles.image}
+        source={require('../../../assets/img/logo-red.png')}
+      />
       <StyledTextContainer>
-        <StyledListItemText>{title}</StyledListItemText>
+        <StyledListItemText fontWeight='bold'>{title}</StyledListItemText>
         <StyledListItemText>{subtitle}</StyledListItemText>
       </StyledTextContainer>
     </StyledListItemContainer>
   );
 };
+
+const styles = StyleSheet.create({
+  image: {
+    height: 50,
+    width: 50,
+  },
+});
