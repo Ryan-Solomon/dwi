@@ -1,13 +1,7 @@
 import React from 'react';
-import {
-  FlatList,
-  StyleSheet,
-  SafeAreaView,
-  Platform,
-  StatusBar,
-} from 'react-native';
+import { FlatList } from 'react-native';
 import { ListItem } from '../../components/list-item/ListItem';
-import Constants from 'expo-constants';
+import { Screen } from '../../components/scr/Screen';
 
 const fakeMessages = [
   {
@@ -26,7 +20,7 @@ const fakeMessages = [
 
 export const MessagesScreen = () => {
   return (
-    <SafeAreaView style={styles.screen}>
+    <Screen>
       <FlatList
         data={fakeMessages}
         keyExtractor={(message) => message.id.toString()}
@@ -41,12 +35,6 @@ export const MessagesScreen = () => {
           );
         }}
       />
-    </SafeAreaView>
+    </Screen>
   );
 };
-
-const styles = StyleSheet.create({
-  screen: {
-    paddingTop: Constants.statusBarHeight,
-  },
-});
