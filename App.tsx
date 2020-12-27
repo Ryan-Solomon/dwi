@@ -1,11 +1,10 @@
 import React from 'react';
-import { ChairScreen } from './src/screens/ChairScreen/ChairScreen';
-import { HomeScreen } from './src/screens/HomeScreen/HomeScreen';
+import { Card } from './src/components/card/Card';
 
 export default function App() {
   return (
     <>
-      <HomeScreen />
+      <Card />
     </>
   );
 }
