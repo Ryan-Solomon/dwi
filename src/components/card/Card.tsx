@@ -8,7 +8,7 @@ type TCardProps = {
   subtitle: string;
 };
 
-export const Card: FC<TCardProps> = ({ image, title, subtitle }) => {
+export const Card: FC<Partial<TCardProps>> = ({ image, title, subtitle }) => {
   return (
     <StyledCardContainer>
       <Image
