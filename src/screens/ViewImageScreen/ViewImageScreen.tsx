@@ -1,9 +1,16 @@
 import React from 'react';
 import { View, ImageBackground, StyleSheet } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
+import { StyledIconContainer } from './ViewImageScreenStyles';
+import { FontAwesome } from '@expo/vector-icons';
 
-export const ChairScreen = () => {
+export const ViewImageScreen = () => {
   return (
     <View style={styles.container}>
+      <StyledIconContainer>
+        <AntDesign name='close' size={30} color='black' />
+        <FontAwesome name='trash-o' size={30} color='black' />
+      </StyledIconContainer>
       <ImageBackground
         style={styles.bgImg}
         source={require('../../../assets/img/chair.jpg')}

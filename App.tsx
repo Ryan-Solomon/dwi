@@ -1,10 +1,10 @@
 import React from 'react';
-import { ListItem } from './src/components/list-item/ListItem';
+import { ViewImageScreen } from './src/screens/ViewImageScreen/ViewImageScreen';
 
 export default function App() {
   return (
     <>
-      <ListItem />
+      <ViewImageScreen />
     </>
   );
 }
