@@ -32,6 +32,7 @@ export const MessagesScreen = () => {
               title={item.title}
               key={item.id}
               image={item.image}
+              onPress={() => console.log(item)}
             />
           );
         }}

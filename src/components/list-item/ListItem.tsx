@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Image, StyleSheet } from 'react-native';
+import { Image, StyleSheet, TouchableHighlight } from 'react-native';
 import {
   StyledListItemContainer,
   StyledListItemText,
@@ -10,24 +10,25 @@ type TListItemProps = {
   image: string;
   title: string;
   subtitle: string;
+  onPress: () => void;
 };
 
 export const ListItem: FC<Partial<TListItemProps>> = ({
-  image,
+  image = require('../../../assets/img/logo-red.png'),
+  onPress,
   title = 'Ryan Solomon',
   subtitle = '5 Listings',
 }) => {
   return (
-    <StyledListItemContainer>
-      <Image
-        style={styles.image}
-        source={require('../../../assets/img/logo-red.png')}
-      />
-      <StyledTextContainer>
-        <StyledListItemText fontWeight='bold'>{title}</StyledListItemText>
-        <StyledListItemText>{subtitle}</StyledListItemText>
-      </StyledTextContainer>
-    </StyledListItemContainer>
+    <TouchableHighlight onPress={onPress}>
+      <StyledListItemContainer>
+        <Image style={styles.image} source={image} />
+        <StyledTextContainer>
+          <StyledListItemText fontWeight='bold'>{title}</StyledListItemText>
+          <StyledListItemText>{subtitle}</StyledListItemText>
+        </StyledTextContainer>
+      </StyledListItemContainer>
+    </TouchableHighlight>
   );
 };
 
