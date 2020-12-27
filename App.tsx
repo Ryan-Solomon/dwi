@@ -1,10 +1,10 @@
 import React from 'react';
-import { ViewImageScreen } from './src/screens/ViewImageScreen/ViewImageScreen';
+import { MessagesScreen } from './src/screens/MessagesScreen/MessagesScreen';
 
 export default function App() {
   return (
     <>
-      <ViewImageScreen />
+      <MessagesScreen />
     </>
   );
 }

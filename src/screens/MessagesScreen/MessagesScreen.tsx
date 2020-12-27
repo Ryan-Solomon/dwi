@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, StyleSheet, SafeAreaView, Platform } from 'react-native';
 import { ListItem } from '../../components/list-item/ListItem';
 
 const fakeMessages = [
@@ -19,19 +19,21 @@ const fakeMessages = [
 
 export const MessagesScreen = () => {
   return (
-    <FlatList
-      data={fakeMessages}
-      keyExtractor={(message) => message.id.toString()}
-      renderItem={({ item }) => {
-        return (
-          <ListItem
-            subtitle={item.description}
-            title={item.title}
-            key={item.id}
-            image={item.image}
-          />
-        );
-      }}
-    />
+    <SafeAreaView>
+      <FlatList
+        data={fakeMessages}
+        keyExtractor={(message) => message.id.toString()}
+        renderItem={({ item }) => {
+          return (
+            <ListItem
+              subtitle={item.description}
+              title={item.title}
+              key={item.id}
+              image={item.image}
+            />
+          );
+        }}
+      />
+    </SafeAreaView>
   );
 };
