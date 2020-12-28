@@ -1,10 +1,11 @@
 import React from 'react';
-import { AccountScreen } from './src/screens/AccountScreen/AccountScreen';
+import { ListingsScreen } from './src/screens/ListingsScreen/ListingsScreen';
+import { Screen } from './src/components/scr/Screen';
 
 export default function App() {
   return (
-    <>
-      <AccountScreen />
-    </>
+    <Screen>
+      <ListingsScreen />
+    </Screen>
   );
 }
