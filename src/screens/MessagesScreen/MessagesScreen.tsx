@@ -24,14 +24,22 @@ export const MessagesScreen = () => {
   const [messages, setMessages] = useState(fakeMessages);
 
   const deleteMessage = (id: number) => {
-    const newMessages = messages.filter((message) => message.id !== id);
+    console.log('__________');
+    const newMessages = messages.filter((message) => {
+      console.log(id);
+      console.log(message);
+      if (message.id !== id) return message;
+      else {
+        return;
+      }
+    });
     setMessages(newMessages);
   };
 
   return (
     <Screen>
       <FlatList
-        data={fakeMessages}
+        data={messages}
         keyExtractor={(message) => message.id.toString()}
         renderItem={({ item }) => {
           return (

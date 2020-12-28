@@ -22,6 +22,7 @@ export const ListItemDelete: FC<TProps> = ({ onPressFunction }) => {
 const StyledDeleteContainer = styled.View`
   background-color: #da4141;
   width: 70px;
+  height: 100%;
   justify-content: center;
   align-items: center;
 `;
