@@ -15,6 +15,8 @@ export const AppTextInput: FC<TProps> = ({ iconName }) => {
   );
 };
 
+// Styles
+
 const StyledTextInputContainer = styled.View`
   background-color: #e8e6e6;
   flex-direction: row;
