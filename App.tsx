@@ -7,8 +7,8 @@ export default function App() {
     <>
       <ListItem
         title='My title'
-        // subtitle='My subtitle'
-        imageComponent={<Icon name='email' />}
+        subtitle='My subtitle'
+        iconComponent={<Icon name='email' />}
       />
     </>
   );

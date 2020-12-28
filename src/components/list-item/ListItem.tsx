@@ -13,7 +13,7 @@ type TListItemProps = {
   subtitle: string;
   onPress: () => void;
   renderRightActions: ({}: {}) => JSX.Element;
-  imageComponent?: ReactNode;
+  iconComponent?: ReactNode;
 };
 
 export const ListItem: FC<Partial<TListItemProps>> = ({
@@ -22,13 +22,13 @@ export const ListItem: FC<Partial<TListItemProps>> = ({
   title = 'Ryan Solomon',
   subtitle = '',
   renderRightActions,
-  imageComponent,
+  iconComponent,
 }) => {
   return (
     <Swipeable renderRightActions={renderRightActions}>
       <TouchableHighlight onPress={onPress}>
         <StyledListItemContainer>
-          {imageComponent}
+          {iconComponent}
           {image && (
             <Image
               style={styles.image}
