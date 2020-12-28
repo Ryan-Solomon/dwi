@@ -2,10 +2,10 @@ import styled from 'styled-components/native';
 
 export const StyledCardContainer = styled.View`
   width: 90%;
-  margin: auto;
+  margin: 10px auto;
   border-radius: 10px;
   overflow: hidden;
-  background-color: #cbcbcb;
+  background-color: #e2e2e2;
 `;
 
 type StyledTextProps = {
@@ -16,7 +16,10 @@ type StyledTextProps = {
 export const StyledCardText = styled.Text<Partial<StyledTextProps>>`
   color: ${({ fontColor = 'black' }) => fontColor};
   font-size: ${({ fontSize = '16px' }) => fontSize};
-  margin-top: 16px;
+`;
+
+export const StyledTextContainer = styled.View`
+  margin-top: 12px;
   margin-bottom: 10px;
   margin-left: 16px;
 `;

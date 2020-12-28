@@ -1,10 +1,10 @@
 import React from 'react';
-import { MessagesScreen } from './src/screens/MessagesScreen/MessagesScreen';
+import { ListingsScreen } from './src/screens/ListingsScreen/ListingsScreen';
 
 export default function App() {
   return (
     <>
-      <MessagesScreen />
+      <ListingsScreen />
     </>
   );
 }

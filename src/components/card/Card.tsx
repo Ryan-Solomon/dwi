@@ -1,6 +1,12 @@
 import React, { FC } from 'react';
 import { View, Image, StyleSheet } from 'react-native';
-import { StyledCardContainer, StyledCardText } from './CardStyles';
+import {
+  StyledCardContainer,
+  StyledCardText,
+  StyledTextContainer,
+} from './CardStyles';
+
+const defaultImage = require('../../../assets/img/background.jpg');
 
 type TCardProps = {
   image: string;
@@ -8,15 +14,18 @@ type TCardProps = {
   subtitle: string;
 };
 
-export const Card: FC<Partial<TCardProps>> = ({ image, title, subtitle }) => {
+export const Card: FC<Partial<TCardProps>> = ({
+  image = defaultImage,
+  title,
+  subtitle,
+}) => {
   return (
     <StyledCardContainer>
-      <Image
-        source={require('../../../assets/img/jacket.jpg')}
-        style={styles.image}
-      />
-      <StyledCardText>Red Jacket</StyledCardText>
-      <StyledCardText fontColor='#007e00'>$100</StyledCardText>
+      <Image source={image} style={styles.image} />
+      <StyledTextContainer>
+        <StyledCardText>{title}</StyledCardText>
+        <StyledCardText fontColor='#007e00'>{subtitle}</StyledCardText>
+      </StyledTextContainer>
     </StyledCardContainer>
   );
 };
