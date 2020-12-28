@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { StyledIconContainer } from '../../screens/ViewImageScreen/ViewImageScreenStyles';
+import styled from 'styled-components/native';
 
 type TIconProps = {
   name: string;
@@ -11,17 +11,30 @@ type TIconProps = {
 
 export const Icon: FC<TIconProps> = ({
   name,
-  size = 40,
+  size = 50,
   backgroundColor = 'black',
   iconColor = 'white',
 }) => {
   return (
-    <StyledIconContainer>
+    <StyledIconContainer backgroundColor={backgroundColor} size={size}>
       <MaterialCommunityIcons
         name={name as any}
-        size={size / 2}
+        size={size * 0.5}
         color={iconColor}
       />
     </StyledIconContainer>
   );
 };
+
+type TStyleProps = {
+  backgroundColor: string;
+  size: number;
+};
+
+const StyledIconContainer = styled.View<TStyleProps>`
+  background-color: ${({ backgroundColor }) => backgroundColor};
+  width: ${({ size }) => `${size}px`};
+  height: ${({ size }) => `${size}px`};
+  justify-content: center;
+  align-items: center;
+`;
