@@ -33,6 +33,7 @@ export const MessagesScreen = () => {
               key={item.id}
               image={item.image}
               onPress={() => console.log(item)}
+              renderRightActions={() => {}}
             />
           );
         }}

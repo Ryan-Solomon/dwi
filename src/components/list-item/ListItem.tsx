@@ -1,16 +1,18 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { Image, StyleSheet, TouchableHighlight } from 'react-native';
 import {
   StyledListItemContainer,
   StyledListItemText,
   StyledTextContainer,
 } from './ListItemStyles';
+import Swipeable from 'react-native-gesture-handler/Swipeable';
 
 type TListItemProps = {
   image: string;
   title: string;
   subtitle: string;
   onPress: () => void;
+  renderRightActions: () => ReactNode | undefined;
 };
 
 export const ListItem: FC<Partial<TListItemProps>> = ({
@@ -18,17 +20,20 @@ export const ListItem: FC<Partial<TListItemProps>> = ({
   onPress,
   title = 'Ryan Solomon',
   subtitle = '5 Listings',
+  renderRightActions,
 }) => {
   return (
-    <TouchableHighlight onPress={onPress}>
-      <StyledListItemContainer>
-        <Image style={styles.image} source={image} />
-        <StyledTextContainer>
-          <StyledListItemText fontWeight='bold'>{title}</StyledListItemText>
-          <StyledListItemText>{subtitle}</StyledListItemText>
-        </StyledTextContainer>
-      </StyledListItemContainer>
-    </TouchableHighlight>
+    <Swipeable renderRightActions={renderRightActions}>
+      <TouchableHighlight onPress={onPress}>
+        <StyledListItemContainer>
+          <Image style={styles.image} source={image} />
+          <StyledTextContainer>
+            <StyledListItemText fontWeight='bold'>{title}</StyledListItemText>
+            <StyledListItemText>{subtitle}</StyledListItemText>
+          </StyledTextContainer>
+        </StyledListItemContainer>
+      </TouchableHighlight>
+    </Swipeable>
   );
 };
 
