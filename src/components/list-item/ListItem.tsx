@@ -12,7 +12,7 @@ type TListItemProps = {
   title: string;
   subtitle: string;
   onPress: () => void;
-  renderRightActions: () => ReactNode | undefined;
+  renderRightActions: ({}: {}) => JSX.Element;
 };
 
 export const ListItem: FC<Partial<TListItemProps>> = ({

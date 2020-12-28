@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FlatList } from 'react-native';
 import { ListItem } from '../../components/list-item/ListItem';
 import { Screen } from '../../components/scr/Screen';
@@ -21,6 +21,13 @@ const fakeMessages = [
 ];
 
 export const MessagesScreen = () => {
+  const [messages, setMessages] = useState(fakeMessages);
+
+  const deleteMessage = (id: number) => {
+    const newMessages = messages.filter((message) => message.id !== id);
+    setMessages(newMessages);
+  };
+
   return (
     <Screen>
       <FlatList
@@ -34,7 +41,11 @@ export const MessagesScreen = () => {
               key={item.id}
               image={item.image}
               onPress={() => console.log(item)}
-              renderRightActions={ListItemDelete}
+              renderRightActions={() => (
+                <ListItemDelete
+                  onPressFunction={() => deleteMessage(item.id)}
+                />
+              )}
             />
           );
         }}

@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components/native';
 import { AntDesign } from '@expo/vector-icons';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
-export const ListItemDelete = () => {
+type TProps = {
+  onPressFunction: () => void;
+};
+
+export const ListItemDelete: FC<TProps> = ({ onPressFunction }) => {
   return (
-    <StyledDeleteContainer>
-      <AntDesign name='delete' size={30} color='white' />
-    </StyledDeleteContainer>
+    <TouchableWithoutFeedback onPress={onPressFunction}>
+      <StyledDeleteContainer>
+        <AntDesign name='delete' size={30} color='white' />
+      </StyledDeleteContainer>
+    </TouchableWithoutFeedback>
   );
 };
 
