@@ -1,6 +1,9 @@
 import React from 'react';
 import { FlatList } from 'react-native';
+import { Icon } from '../../components/Icon/Icon';
 import { ListItem } from '../../components/list-item/ListItem';
+import { StyledSeparator } from '../../components/separator/ItemSeparator';
+import { Screen } from '../../components/scr/Screen';
 import {
   StyledAccountScreenContainer,
   StyledAccountStuffContainer,
@@ -19,18 +22,35 @@ const accountDetails = [
 
 export const AccountScreen = () => {
   return (
-    <StyledAccountScreenContainer>
-      <ListItem />
-      <StyledAccountStuffContainer>
-        <FlatList
-          data={accountDetails}
-          keyExtractor={(item) => item.title}
-          renderItem={({ item }) => {
-            return <ListItem />;
-          }}
+    <Screen>
+      <StyledAccountScreenContainer>
+        <ListItem
+          image={require('../../../assets/img/logo-red.png')}
+          title='Ryan Solomon'
+          subtitle='ryan@ryansolomon.io'
         />
-      </StyledAccountStuffContainer>
-      <ListItem />
-    </StyledAccountScreenContainer>
+        <StyledAccountStuffContainer>
+          <FlatList
+            data={accountDetails}
+            keyExtractor={(item) => item.title}
+            ItemSeparatorComponent={StyledSeparator}
+            renderItem={({ item }) => {
+              return (
+                <ListItem
+                  title={item.title}
+                  iconComponent={
+                    <Icon
+                      name={item.icon.name}
+                      backgroundColor={item.icon.backgroundColor}
+                    />
+                  }
+                />
+              );
+            }}
+          />
+        </StyledAccountStuffContainer>
+        <ListItem title='Log Out' iconComponent={<Icon name='logout' />} />
+      </StyledAccountScreenContainer>
+    </Screen>
   );
 };
