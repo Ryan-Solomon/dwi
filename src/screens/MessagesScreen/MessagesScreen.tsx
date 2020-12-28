@@ -22,12 +22,10 @@ const fakeMessages = [
 
 export const MessagesScreen = () => {
   const [messages, setMessages] = useState(fakeMessages);
+  const [refreshing, setRefreshing] = useState(false);
 
   const deleteMessage = (id: number) => {
-    console.log('__________');
     const newMessages = messages.filter((message) => {
-      console.log(id);
-      console.log(message);
       if (message.id !== id) return message;
       else {
         return;
@@ -58,6 +56,8 @@ export const MessagesScreen = () => {
           );
         }}
         ItemSeparatorComponent={StyledSeparator}
+        refreshing={refreshing}
+        onRefresh={() => setMessages(fakeMessages)}
       />
     </Screen>
   );
