@@ -21,4 +21,5 @@ export const StyledListItemText = styled.Text<Partial<TextProps>>`
 export const StyledTextContainer = styled.View`
   flex-direction: column;
   margin-left: 10px;
+  justify-content: center;
 `;

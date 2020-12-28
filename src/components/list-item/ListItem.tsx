@@ -20,7 +20,7 @@ export const ListItem: FC<Partial<TListItemProps>> = ({
   image,
   onPress,
   title = 'Ryan Solomon',
-  subtitle = '5 Listings',
+  subtitle = '',
   renderRightActions,
   imageComponent,
 }) => {
@@ -37,7 +37,9 @@ export const ListItem: FC<Partial<TListItemProps>> = ({
           )}
           <StyledTextContainer>
             <StyledListItemText fontWeight='bold'>{title}</StyledListItemText>
-            <StyledListItemText>{subtitle}</StyledListItemText>
+            {subtitle ? (
+              <StyledListItemText>{subtitle}</StyledListItemText>
+            ) : null}
           </StyledTextContainer>
         </StyledListItemContainer>
       </TouchableHighlight>
