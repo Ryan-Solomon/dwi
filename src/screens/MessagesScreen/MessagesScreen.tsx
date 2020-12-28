@@ -3,6 +3,7 @@ import { FlatList } from 'react-native';
 import { ListItem } from '../../components/list-item/ListItem';
 import { Screen } from '../../components/scr/Screen';
 import { StyledSeparator } from '../../components/separator/ItemSeparator';
+import { ListItemDelete } from './../../components/ListItemActions/ListItemDelete';
 
 const fakeMessages = [
   {
@@ -33,7 +34,7 @@ export const MessagesScreen = () => {
               key={item.id}
               image={item.image}
               onPress={() => console.log(item)}
-              renderRightActions={() => {}}
+              renderRightActions={ListItemDelete}
             />
           );
         }}
