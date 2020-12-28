@@ -17,7 +17,11 @@ export const Icon: FC<TIconProps> = ({
 }) => {
   return (
     <StyledIconContainer>
-      <MaterialCommunityIcons name={name} size={size / 2} color={iconColor} />
+      <MaterialCommunityIcons
+        name={name as any}
+        size={size / 2}
+        color={iconColor}
+      />
     </StyledIconContainer>
   );
 };
