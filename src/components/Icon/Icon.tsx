@@ -37,4 +37,5 @@ const StyledIconContainer = styled.View<TStyleProps>`
   height: ${({ size }) => `${size}px`};
   justify-content: center;
   align-items: center;
+  border-radius: ${({ size }) => size / 2};
 `;

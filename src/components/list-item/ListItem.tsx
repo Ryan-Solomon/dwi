@@ -8,25 +8,33 @@ import {
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 
 type TListItemProps = {
-  image: string;
+  image?: string;
   title: string;
   subtitle: string;
   onPress: () => void;
   renderRightActions: ({}: {}) => JSX.Element;
+  imageComponent?: ReactNode;
 };
 
 export const ListItem: FC<Partial<TListItemProps>> = ({
-  image = require('../../../assets/img/logo-red.png'),
+  image,
   onPress,
   title = 'Ryan Solomon',
   subtitle = '5 Listings',
   renderRightActions,
+  imageComponent,
 }) => {
   return (
     <Swipeable renderRightActions={renderRightActions}>
       <TouchableHighlight onPress={onPress}>
         <StyledListItemContainer>
-          <Image style={styles.image} source={image} />
+          {imageComponent}
+          {image && (
+            <Image
+              style={styles.image}
+              source={(image = require('../../../assets/img/logo-red.png'))}
+            />
+          )}
           <StyledTextContainer>
             <StyledListItemText fontWeight='bold'>{title}</StyledListItemText>
             <StyledListItemText>{subtitle}</StyledListItemText>
