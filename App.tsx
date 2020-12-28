@@ -1,11 +1,11 @@
 import React from 'react';
-import { ListingsScreen } from './src/screens/ListingsScreen/ListingsScreen';
 import { Screen } from './src/components/scr/Screen';
+import { AppTextInput } from './src/components/AppTextInput/AppTextInput';
 
 export default function App() {
   return (
     <Screen>
-      <ListingsScreen />
+      <AppTextInput iconName='email' />
     </Screen>
   );
 }
