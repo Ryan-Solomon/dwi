@@ -16,9 +16,17 @@ type TProps = {
   iconName?: string;
   placeholder?: string;
   items: TItem[];
+  onSelectItem: (item: TItem) => void;
+  selectedItem?: TItem;
 };
 
-export const AppPicker: FC<TProps> = ({ iconName, placeholder, items }) => {
+export const AppPicker: FC<TProps> = ({
+  iconName,
+  placeholder,
+  items,
+  onSelectItem,
+  selectedItem,
+}) => {
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <>
@@ -27,7 +35,9 @@ export const AppPicker: FC<TProps> = ({ iconName, placeholder, items }) => {
           {iconName && (
             <MaterialCommunityIcons name={iconName as any} size={20} />
           )}
-          <StyledPicker placeholder={placeholder} />
+          <StyledPicker
+            placeholder={selectedItem ? selectedItem.label : placeholder}
+          />
           <MaterialCommunityIcons name='chevron-down' size={20} />
         </StyledPickerContainer>
       </TouchableWithoutFeedback>
@@ -38,7 +48,15 @@ export const AppPicker: FC<TProps> = ({ iconName, placeholder, items }) => {
             data={items}
             keyExtractor={(item) => item.value.toString()}
             renderItem={({ item }) => {
-              return <PickerItem item={item} onPressFunction={() => null} />;
+              return (
+                <PickerItem
+                  item={item}
+                  onPressFunction={() => {
+                    setModalVisible(false);
+                    onSelectItem(item);
+                  }}
+                />
+              );
             }}
           />
         </Screen>

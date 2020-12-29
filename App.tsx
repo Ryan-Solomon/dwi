@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Screen } from './src/components/scr/Screen';
-import { AppPicker } from './src/components/AppPicker/AppPicker';
+import { AppPicker, TItem } from './src/components/AppPicker/AppPicker';
 
 const categories = [
   { label: 'Furniture1', value: 1 },
@@ -9,9 +9,16 @@ const categories = [
 ];
 
 export default function App() {
+  const [category, setCategory] = useState<TItem | undefined>();
   return (
     <Screen>
-      <AppPicker items={categories} iconName='apps' placeholder='Category' />
+      <AppPicker
+        selectedItem={category}
+        onSelectItem={(item: TItem) => setCategory(item)}
+        items={categories}
+        iconName='apps'
+        placeholder='Category'
+      />
     </Screen>
   );
 }
