@@ -1,15 +1,23 @@
 import React, { FC, useState } from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import styled from 'styled-components/native';
-import { Button, Modal, TouchableWithoutFeedback } from 'react-native';
+import {
+  Button,
+  Modal,
+  TouchableWithoutFeedback,
+  FlatList,
+} from 'react-native';
 import { Screen } from '../../components/scr/Screen';
+
+export type TItem = { label: string; value: number };
 
 type TProps = {
   iconName?: string;
   placeholder?: string;
+  items: TItem[];
 };
 
-export const AppPicker: FC<TProps> = ({ iconName, placeholder }) => {
+export const AppPicker: FC<TProps> = ({ iconName, placeholder, items }) => {
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <>
@@ -25,6 +33,13 @@ export const AppPicker: FC<TProps> = ({ iconName, placeholder }) => {
       <Modal visible={modalVisible} animationType='slide'>
         <Screen>
           <Button title='Close' onPress={() => setModalVisible(false)} />
+          <FlatList
+            data={items}
+            keyExtractor={(item) => item.value.toString()}
+            renderItem={({ item }) => {
+              return <PickerItem item={item} />;
+            }}
+          />
         </Screen>
       </Modal>
     </>
