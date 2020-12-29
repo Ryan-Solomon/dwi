@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
+import React, { ChangeEvent, FC } from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import styled from 'styled-components/native';
 
 type TProps = {
   iconName: string;
-  [key: string]: string | boolean;
+  [key: string]: string | boolean | ((e: string | ChangeEvent<any>) => void);
 };
 
 export const AppTextInput: FC<Partial<TProps>> = ({
