@@ -4,6 +4,12 @@ import { Image, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 import { Formik } from 'formik';
 import { AppTextInput } from './../../components/AppTextInput/AppTextInput';
+import * as Yup from 'yup';
+
+const validationSchema = Yup.object().shape({
+  email: Yup.string().required().email().label('Email'),
+  password: Yup.string().required().min(4).label('Password'),
+});
 
 export const LoginScreen = () => {
   return (
@@ -16,8 +22,9 @@ export const LoginScreen = () => {
         <Formik
           initialValues={{ email: '', password: '' }}
           onSubmit={(values) => console.log(values)}
+          validationSchema={validationSchema}
         >
-          {({ handleChange, handleSubmit }) => (
+          {({ handleChange, handleSubmit, errors }) => (
             <>
               <AppTextInput
                 keyboardType='email-address'
@@ -28,6 +35,7 @@ export const LoginScreen = () => {
                 icon='email'
                 textContentType='emailAddress'
               />
+              <StyledText>{errors.email}</StyledText>
               <AppTextInput
                 autoCapitalize='none'
                 autoCorrect={false}
@@ -37,6 +45,8 @@ export const LoginScreen = () => {
                 secureTextEntry={true}
                 textContentType='password'
               />
+              <StyledText>{errors.password}</StyledText>
+
               {/* @ts-ignore */}
               <StyledLoginButton onPress={handleSubmit}>
                 <StyledButtonText>Login</StyledButtonText>
@@ -76,4 +86,12 @@ const StyledButtonText = styled.Text`
   color: white;
   text-align: center;
   font-size: 20px;
+`;
+
+const StyledText = styled.Text`
+  font-size: 10px;
+  color: #c00d0d;
+  margin-top: 5px;
+  margin-left: 10px;
+  align-self: flex-start;
 `;
