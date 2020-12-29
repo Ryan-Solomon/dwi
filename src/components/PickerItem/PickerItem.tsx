@@ -21,4 +21,5 @@ export const PickerItem: FC<TProps> = ({
 
 const StyledText = styled.Text`
   color: #222;
+  padding: 20px;
 `;

@@ -8,6 +8,7 @@ import {
   FlatList,
 } from 'react-native';
 import { Screen } from '../../components/scr/Screen';
+import { PickerItem } from '../PickerItem/PickerItem';
 
 export type TItem = { label: string; value: number };
 
@@ -37,7 +38,7 @@ export const AppPicker: FC<TProps> = ({ iconName, placeholder, items }) => {
             data={items}
             keyExtractor={(item) => item.value.toString()}
             renderItem={({ item }) => {
-              return <PickerItem item={item} />;
+              return <PickerItem item={item} onPressFunction={() => null} />;
             }}
           />
         </Screen>
