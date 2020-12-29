@@ -27,6 +27,8 @@ const StyledTextInputContainer = styled.View`
   align-items: center;
   padding: 10px;
   border-radius: 30px;
+  width: 100%;
+  margin-top: 20px;
 `;
 
 const StyledTextInput = styled.TextInput`
