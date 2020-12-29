@@ -1,6 +1,8 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import styled from 'styled-components/native';
+import { Button, Modal, TouchableWithoutFeedback } from 'react-native';
+import { Screen } from '../../components/scr/Screen';
 
 type TProps = {
   iconName?: string;
@@ -8,12 +10,24 @@ type TProps = {
 };
 
 export const AppPicker: FC<TProps> = ({ iconName, placeholder }) => {
+  const [modalVisible, setModalVisible] = useState(false);
   return (
-    <StyledPickerContainer>
-      {iconName && <MaterialCommunityIcons name={iconName as any} size={20} />}
-      <StyledPicker placeholder={placeholder} />
-      <MaterialCommunityIcons name='chevron-down' size={20} />
-    </StyledPickerContainer>
+    <>
+      <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
+        <StyledPickerContainer>
+          {iconName && (
+            <MaterialCommunityIcons name={iconName as any} size={20} />
+          )}
+          <StyledPicker placeholder={placeholder} />
+          <MaterialCommunityIcons name='chevron-down' size={20} />
+        </StyledPickerContainer>
+      </TouchableWithoutFeedback>
+      <Modal visible={modalVisible} animationType='slide'>
+        <Screen>
+          <Button title='Close' onPress={() => setModalVisible(false)} />
+        </Screen>
+      </Modal>
+    </>
   );
 };
 
