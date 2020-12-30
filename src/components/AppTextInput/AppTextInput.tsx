@@ -4,15 +4,17 @@ import styled from 'styled-components/native';
 
 type TProps = {
   iconName: string;
+  width: string;
   [key: string]: string | boolean | ((e: string | ChangeEvent<any>) => void);
 };
 
 export const AppTextInput: FC<Partial<TProps>> = ({
   iconName,
+  width = '100%',
   ...otherProps
 }) => {
   return (
-    <StyledTextInputContainer>
+    <StyledTextInputContainer width={width}>
       {iconName && <MaterialCommunityIcons name={iconName as any} size={25} />}
       <StyledTextInput {...otherProps} />
     </StyledTextInputContainer>
@@ -21,13 +23,17 @@ export const AppTextInput: FC<Partial<TProps>> = ({
 
 // Styles
 
-const StyledTextInputContainer = styled.View`
+type TextContainerProps = {
+  width: string;
+};
+
+const StyledTextInputContainer = styled.View<TextContainerProps>`
   background-color: #e8e6e6;
   flex-direction: row;
   align-items: center;
   padding: 10px;
   border-radius: 30px;
-  width: 100%;
+  width: ${({ width }) => width};
   margin-top: 20px;
 `;
 

@@ -5,6 +5,7 @@ import { AppTextInput } from '../AppTextInput/AppTextInput';
 
 type TProps = {
   name: string;
+  width: string;
   [key: string]:
     | string
     | boolean
@@ -12,11 +13,18 @@ type TProps = {
     | ((e: string | ChangeEvent<any>) => void);
 };
 
-export const AppFormField: FC<TProps> = ({ name, children, ...otherProps }) => {
+export const AppFormField: FC<Partial<TProps>> = ({
+  name,
+  width,
+  children,
+  ...otherProps
+}) => {
   const { setFieldTouched, errors, touched, handleChange } = useFormikContext();
+  if (!name) return <AppTextInput />;
   return (
     <>
       <AppTextInput
+        width={width}
         onChangeText={handleChange(name)}
         onBlur={() => setFieldTouched(name)}
         {...otherProps}
