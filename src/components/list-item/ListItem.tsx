@@ -37,9 +37,13 @@ export const ListItem: FC<Partial<TListItemProps>> = ({
             />
           )}
           <StyledTextContainer>
-            <StyledListItemText fontWeight='bold'>{title}</StyledListItemText>
+            <StyledListItemText numberOfLines={1} fontWeight='bold'>
+              {title}
+            </StyledListItemText>
             {subtitle ? (
-              <StyledListItemText>{subtitle}</StyledListItemText>
+              <StyledListItemText numberOfLines={1}>
+                {subtitle}
+              </StyledListItemText>
             ) : null}
           </StyledTextContainer>
           <MaterialCommunityIcons color='grey' name='chevron-right' size={25} />

@@ -23,8 +23,10 @@ export const Card: FC<Partial<TCardProps>> = ({
     <StyledCardContainer>
       <Image source={image} style={styles.image} />
       <StyledTextContainer>
-        <StyledCardText>{title}</StyledCardText>
-        <StyledCardText fontColor='#007e00'>{subtitle}</StyledCardText>
+        <StyledCardText numberOfLines={1}>{title}</StyledCardText>
+        <StyledCardText numberOfLines={1} fontColor='#007e00'>
+          {subtitle}
+        </StyledCardText>
       </StyledTextContainer>
     </StyledCardContainer>
   );
