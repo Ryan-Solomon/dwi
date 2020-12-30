@@ -4,6 +4,7 @@ export const StyledListItemContainer = styled.View`
   flex-direction: row;
   margin-left: 20px;
   padding: 15px;
+  align-items: center;
 `;
 
 type TextProps = {
@@ -22,4 +23,5 @@ export const StyledTextContainer = styled.View`
   flex-direction: column;
   margin-left: 10px;
   justify-content: center;
+  flex: 1;
 `;

@@ -6,6 +6,7 @@ import {
   StyledTextContainer,
 } from './ListItemStyles';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 type TListItemProps = {
   image?: string;
@@ -41,6 +42,7 @@ export const ListItem: FC<Partial<TListItemProps>> = ({
               <StyledListItemText>{subtitle}</StyledListItemText>
             ) : null}
           </StyledTextContainer>
+          <MaterialCommunityIcons color='grey' name='chevron-right' size={25} />
         </StyledListItemContainer>
       </TouchableHighlight>
     </Swipeable>
