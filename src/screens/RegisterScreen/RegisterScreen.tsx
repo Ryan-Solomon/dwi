@@ -7,11 +7,13 @@ import * as Yup from 'yup';
 import { AppFormField } from './../../components/AppFormField/AppFormField';
 
 const validationSchema = Yup.object().shape({
+  name: Yup.string().required().label('Name'),
+
   email: Yup.string().required().email().label('Email'),
   password: Yup.string().required().min(4).label('Password'),
 });
 
-export const LoginScreen = () => {
+export const RegisterScreen = () => {
   return (
     <Screen>
       <StyledContainer>
@@ -20,7 +22,7 @@ export const LoginScreen = () => {
           source={require('../../../assets/img/logo-red.png')}
         />
         <Formik
-          initialValues={{ email: '', password: '' }}
+          initialValues={{ name: '', email: '', password: '' }}
           onSubmit={(values) => console.log(values)}
           validationSchema={validationSchema}
         >
@@ -90,12 +92,4 @@ const StyledButtonText = styled.Text`
   color: white;
   text-align: center;
   font-size: 20px;
-`;
-
-const StyledText = styled.Text`
-  font-size: 10px;
-  color: #c00d0d;
-  margin-top: 5px;
-  margin-left: 10px;
-  align-self: flex-start;
 `;

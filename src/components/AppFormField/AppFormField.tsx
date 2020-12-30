@@ -5,7 +5,11 @@ import { AppTextInput } from '../AppTextInput/AppTextInput';
 
 type TProps = {
   name: string;
-  [key: string]: string | boolean | ((e: string | ChangeEvent<any>) => void);
+  [key: string]:
+    | string
+    | boolean
+    | number
+    | ((e: string | ChangeEvent<any>) => void);
 };
 
 export const AppFormField: FC<TProps> = ({ name, children, ...otherProps }) => {

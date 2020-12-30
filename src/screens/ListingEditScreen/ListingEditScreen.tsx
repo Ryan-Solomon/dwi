@@ -5,13 +5,24 @@ import styled from 'styled-components/native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { AppFormField } from './../../components/AppFormField/AppFormField';
+import AppFormPicker from '../../components/AppFormPicker/AppFormPicker';
 
 const validationSchema = Yup.object().shape({
-  email: Yup.string().required().email().label('Email'),
-  password: Yup.string().required().min(4).label('Password'),
+  title: Yup.string().required().min(1).label('Title'),
+  price: Yup.number().required().min(1).max(10000).label('Price'),
+  description: Yup.string().label('Description'),
+  category: Yup.object().required().nullable().label('Category'),
 });
 
-export const LoginScreen = () => {
+export type TCategory = { label: string; value: number };
+
+const categories: TCategory[] = [
+  { label: 'Furniture', value: 1 },
+  { label: 'Clothing', value: 2 },
+  { label: 'Camera', value: 3 },
+];
+
+export const ListingEditScreen = () => {
   return (
     <Screen>
       <StyledContainer>
@@ -20,34 +31,40 @@ export const LoginScreen = () => {
           source={require('../../../assets/img/logo-red.png')}
         />
         <Formik
-          initialValues={{ email: '', password: '' }}
+          initialValues={{
+            title: '',
+            price: '',
+            description: '',
+            category: null,
+          }}
           onSubmit={(values) => console.log(values)}
           validationSchema={validationSchema}
         >
           {({ handleSubmit }) => (
             <>
+              <AppFormField maxLength={255} name='title' placeholder='Title' />
               <AppFormField
-                name='email'
-                keyboardType='email-address'
-                placeholder='Email'
-                autoCapitalize='none'
-                autoCorrect={false}
-                icon='email'
-                textContentType='emailAddress'
+                keyboardType='numeric'
+                maxLength={8}
+                name='price'
+                placeholder='Price'
+              />
+              <AppFormPicker
+                items={categories}
+                name='category'
+                placeholder='Category'
               />
               <AppFormField
-                name='password'
-                autoCapitalize='none'
-                autoCorrect={false}
-                icon='lock'
-                placeholder='Password'
-                secureTextEntry={true}
-                textContentType='password'
+                maxLength={255}
+                multiline
+                name='description'
+                numberOfLines={3}
+                placeholder='Description'
               />
 
               {/* @ts-ignore */}
               <StyledLoginButton onPress={handleSubmit}>
-                <StyledButtonText>Login</StyledButtonText>
+                <StyledButtonText>Post</StyledButtonText>
               </StyledLoginButton>
             </>
           )}
@@ -84,4 +101,12 @@ const StyledButtonText = styled.Text`
   color: white;
   text-align: center;
   font-size: 20px;
+`;
+
+const StyledText = styled.Text`
+  font-size: 10px;
+  color: #c00d0d;
+  margin-top: 5px;
+  margin-left: 10px;
+  align-self: flex-start;
 `;
