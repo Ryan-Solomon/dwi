@@ -3,7 +3,6 @@ import { Screen } from '../../components/scr/Screen';
 import { Image, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 import { Formik } from 'formik';
-import { AppTextInput } from './../../components/AppTextInput/AppTextInput';
 import * as Yup from 'yup';
 import { AppFormField } from './../../components/AppFormField/AppFormField';
 
@@ -27,6 +26,12 @@ export const LoginScreen = () => {
         >
           {({ handleSubmit }) => (
             <>
+              <AppFormField
+                name='name'
+                placeholder='Name'
+                autoCorrect={false}
+                icon='account'
+              />
               <AppFormField
                 name='email'
                 keyboardType='email-address'

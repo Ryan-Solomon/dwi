@@ -23,6 +23,8 @@ export const AppFormField: FC<TProps> = ({ name, children, ...otherProps }) => {
   );
 };
 
+// Styles
+
 const StyledText = styled.Text`
   font-size: 10px;
   color: #c00d0d;
